@@ -1,0 +1,241 @@
+{
+  "info": {
+    "name": "Swagger Petstore User API Tests",
+    "_postman_id": "petstore-user-api-tests-001",
+    "description": "Postman collection for testing Swagger Petstore /user endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "POST /user - Create User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 1,\n  \"username\": \"testuser\",\n  \"firstName\": \"Test\",\n  \"lastName\": \"User\",\n  \"email\": \"testuser@example.com\",\n  \"password\": \"password123\",\n  \"phone\": \"1234567890\",\n  \"userStatus\": 1\n}"
+        },
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/user",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "user"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "GET /user/{username} - Get User by Username",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/user/testuser",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "user",
+            "testuser"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"User object is returned\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property(\"username\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "PUT /user/{username} - Update User",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 1,\n  \"username\": \"testuser\",\n  \"firstName\": \"Updated\",\n  \"lastName\": \"User\",\n  \"email\": \"updateduser@example.com\",\n  \"password\": \"newpass\",\n  \"phone\": \"9876543210\",\n  \"userStatus\": 1\n}"
+        },
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/user/testuser",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "user",
+            "testuser"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "DELETE /user/{username} - Delete User",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/user/testuser",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "user",
+            "testuser"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "GET /user/login - User Login",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/user/login?username=testuser&password=password123",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "user",
+            "login"
+          ],
+          "query": [
+            {
+              "key": "username",
+              "value": "testuser"
+            },
+            {
+              "key": "password",
+              "value": "password123"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Login status is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "GET /user/logout - User Logout",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/user/logout",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "user",
+            "logout"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Logout status is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ]
+}
