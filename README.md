@@ -36,14 +36,6 @@ Full details are available in the attached PDF (reports/test_case_report.pdf), b
 	•	BUG04: No confirmation after resetting app state
 
 
-Suggested improvements:
-	•	Use fallback images
-	•	Stronger error validation
-	•	Add loading spinners during filter
-	•	Improve checkout form validation
-	•	Add screen reader support (accessibility)
-
-
 Tools Used
 	•	Selenium WebDriver (Python)
 	•	Postman (API testing)
